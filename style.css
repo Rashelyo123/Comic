@@ -1,0 +1,284 @@
+body {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  background-color: black;
+  color: white;
+}
+
+/* Slider container */
+.slider {
+  position: relative;
+  width: 100vw; /* Lebar 100% dari viewport */
+  height: 100vh; /* Tinggi 100% dari viewport */
+  overflow: hidden; /* Pastikan overflow disembunyikan */
+}
+
+/* Slides */
+.slides {
+  display: flex;
+  width: 300%; /* 3 gambar, jadi 300% */
+  height: 100%; /* Tinggi 100% dari container slider */
+  transition: transform 1s ease; /* Transisi smooth saat slide bergeser */
+}
+
+/* Gambar slider */
+.slides img {
+  width: 33.33%; /* Ubah ini untuk setiap gambar mengambil 1/3 dari lebar */
+  height: 100%; /* Menyesuaikan tinggi gambar dengan tinggi slider */
+  object-fit: cover; /* Mengatur gambar agar tidak pecah */
+}
+
+/* Previous & Next button */
+.prev,
+.next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.prev {
+  left: 10px;
+}
+
+.next {
+  right: 25px;
+}
+
+/* Dot indicators */
+.dot-container {
+  position: absolute;
+  bottom: 20px; /* Posisi dot di bawah slider */
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+}
+
+.dot {
+  height: 10px;
+  width: 10px;
+  margin: 0 5px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.active-dot {
+  background-color: white; /* Warna aktif dot */
+}
+
+.search-bar {
+  position: absolute; /* Mengubah posisi menjadi absolut */
+  top: 10px; /* Menempatkan search bar pada posisi atas */
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 20px;
+  width: 80%; /* Menyesuaikan lebar search bar */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); /* Memberikan efek bayangan */
+}
+
+.search-bar input {
+  width: 90%;
+  padding: 5px;
+  border: none;
+  border-radius: 8px;
+  color: rgb(183, 173, 173);
+  background-color: rgba(220, 0, 0, 0.1);
+}
+
+.search-bar .icon {
+  font-size: 1.5em;
+  color: white;
+}
+.search-bar:hover {
+  background-color: rgba(0, 0, 0, 0.7); /* Mengubah background saat hover */
+  transition: background-color 0.3s ease;
+}
+
+.content {
+  padding: 20px;
+  margin-bottom: 50px;
+}
+
+.section-title {
+  font-size: 1.2em;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.section-title .arrow {
+  float: right;
+  font-size: 1em;
+}
+
+.favorites,
+.recommendations {
+  display: flex;
+  overflow-x: auto;
+  padding-bottom: 10px; /* Tambahkan padding bawah untuk memberikan ruang */
+  margin-bottom: 0; /* Menghilangkan margin bawah untuk menghapus garis putih */
+  scrollbar-width: none; /* Menghilangkan scrollbar di Firefox */
+}
+
+/* Menghilangkan scrollbar di Webkit (Chrome, Safari) */
+.favorites::-webkit-scrollbar,
+.recommendations::-webkit-scrollbar {
+  display: none;
+}
+
+.favorites .item,
+.recommendations .item {
+  margin-right: 10px;
+  text-align: center;
+}
+
+.favorites .item img,
+.recommendations .item img {
+  width: 100px;
+  height: 150px;
+  border-radius: 10px;
+}
+
+.favorites .item .title,
+.recommendations .item .title {
+  margin-top: 5px;
+  font-size: 11px;
+}
+
+.recommendations .item .subtitle {
+  font-size: 0.8em;
+  color: gray;
+}
+
+.recommendations .item .stats {
+  font-size: 0.8em;
+  color: green;
+}
+.favorites .item img:hover,
+.recommendations .item img:hover {
+  transform: scale(1.05); /* Sedikit memperbesar gambar saat di-hover */
+  transition: transform 0.3s ease; /* Berikan efek transisi yang halus */
+}
+
+.favorites .item:hover .title,
+.recommendations .item:hover .title {
+  color: #f39c12; /* Ubah warna teks menjadi oranye saat di-hover */
+}
+
+.footer {
+  display: flex;
+  justify-content: space-around;
+  background-color: #1a1a1a;
+  padding: 10px 0;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  z-index: 9999;
+}
+
+.footer .tab {
+  text-align: center;
+}
+
+.footer .tab .icon {
+  font-size: 1.5em;
+}
+
+.footer .tab .label {
+  font-size: 0.8em;
+}
+.footer .tab:hover {
+  color: #3498db; /* Ubah warna ikon dan teks menjadi biru saat di-hover */
+  cursor: pointer; /* Ubah kursor menjadi pointer */
+  transition: color 0.3s ease; /* Berikan transisi halus */
+}
+
+.footer .tab .icon:hover {
+  color: #3498db; /* Ubah warna ikon menjadi biru saat di-hover */
+}
+
+/* Menghilangkan dekorasi dari semua elemen <a> dengan kelas 'no-decoration' */
+.no-decoration {
+  text-decoration: none; /* Menghilangkan garis bawah link */
+  color: inherit; /* Membiarkan warna mengikuti warna parent-nya */
+}
+
+.no-decoration:hover {
+  color: #3498db; /* Anda bisa menambahkan efek hover jika diinginkan */
+}
+
+/* Media Query untuk Laptop */
+@media screen and (max-width: 1366px) {
+  .header .title {
+    font-size: 1.8em;
+  }
+  .no-decoration {
+    text-decoration: none; /* Menghilangkan garis bawah link */
+    color: inherit; /* Membiarkan warna mengikuti warna parent-nya */
+  }
+
+  .no-decoration:hover {
+    color: #3498db; /* Anda bisa menambahkan efek hover jika diinginkan */
+  }
+
+  .search-bar {
+    width: 70%; /* Mengurangi lebar search bar pada layar laptop */
+    top: 15px; /* Mengatur posisi vertikal */
+  }
+
+  .favorites .item img,
+  .recommendations .item img {
+    width: 110px; /* Sedikit memperbesar gambar untuk laptop */
+    height: 165px;
+  }
+
+  .favorites .item .title,
+  .recommendations .item .title {
+    font-size: 1em; /* Memperbesar font untuk laptop */
+  }
+
+  .footer .tab .icon {
+    font-size: 1.4em; /* Sedikit mengurangi ukuran ikon footer */
+  }
+
+  .footer .tab .label {
+    font-size: 0.75em; /* Sedikit mengurangi ukuran label */
+  }
+}
+/* Media Query untuk tablet dan perangkat lebih kecil */
+@media screen and (max-width: 768px) {
+  .favorites .item img,
+  .recommendations .item img {
+    width: 90px; /* Ukuran gambar lebih kecil untuk perangkat kecil */
+    height: 130px;
+  }
+
+  .search-bar {
+    width: 90%; /* Lebar search bar lebih besar untuk perangkat kecil */
+    top: 5px; /* Turunkan sedikit posisi vertikal */
+  }
+
+  .footer .tab .icon {
+    font-size: 1.3em; /* Ubah ukuran ikon di footer */
+  }
+
+  .footer .tab .label {
+    font-size: 0.7em; /* Ubah ukuran label di footer */
+  }
+}
+@media screen and (max-width: 768px) {
+  .slider {
+    height: 30vh; /* Atur tinggi menjadi setengah viewport untuk perangkat kecil */
+  }
+}
