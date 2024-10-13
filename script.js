@@ -46,6 +46,6 @@ const items = document.querySelectorAll(".item");
 items.forEach((item) => {
   item.addEventListener("click", () => {
     // Redirect ke halaman episode.html
-    window.location.href = "episode.html";
+    window.location.href = "Episode.html";
   });
 });
